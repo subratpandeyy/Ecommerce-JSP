@@ -21,6 +21,7 @@
             if (username != null) {
         %>
             <a href="addProduct.jsp">Add Product</a>
+            <a href="cart.jsp">Cart</a>
             <a href="logout.jsp">Logout</a>
         <%
             } else {
@@ -32,7 +33,7 @@
 	</nav>
 	</header>
 	
-	<h2>
+	<h2 class="welcome">
     <%
         if(username != null){
             out.print("Welcome, " + username + "!");
@@ -68,18 +69,28 @@
     %>
                 <div class="card">
                     <h1><%= pname %></h1>
-                    <p><%= pdesc %></p>
+                    <p class="desc"><%= pdesc %></p>
                     <p><strong>₹ <%= price %></strong></p>
                     <%
 					    int avail = rs.getInt("available");
 					%>
-					<p>Status: <%= (avail == 1 ? "Available" : "Out of stock") %></p>
+					<p class="avail">Status: <%= (avail == 1 ? "Available" : "Out of stock") %></p>
 					<% if(available) { %>
-				        <form action="cart" method="post">
+					<%
+			            if (username != null) {
+			        %>
+			        <form action="cart" method="post">
 				            <input type="hidden" name="pname" value="<%= pname %>">
 				            <input type="hidden" name="price" value="<%= price %>">
 				            <button type="submit">Add to Cart</button>
 				        </form>
+			        <%
+			            } else {
+			        %>
+				            <a href="signin.jsp">Add to Cart</a>
+			        <%
+			            }
+			       	%>
 				    <% } %>
                 </div>
     <%

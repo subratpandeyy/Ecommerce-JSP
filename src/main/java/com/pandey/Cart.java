@@ -1,6 +1,7 @@
 package com.pandey;
 
 import java.util.List;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import jakarta.servlet.annotation.WebServlet;
@@ -13,7 +14,7 @@ import jakarta.servlet.http.HttpSession;
 public class Cart extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse res) {
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		res.setContentType("text/html");
 
 		String pnameString = req.getParameter("pname");
@@ -22,16 +23,15 @@ public class Cart extends HttpServlet{
 		HttpSession session = req.getSession();
 
 		// Specify type arguments for List and ArrayList
+		@SuppressWarnings("unchecked")
 		List<String> cart = (List<String>) session.getAttribute("cart");
 		if (cart == null) {
-		    cart = new ArrayList();
+		    cart = new ArrayList<String>();
 		}
 
 		cart.add(pnameString + " - ₹" + priceDouble);
 		session.setAttribute("cart", cart);
 
 		res.sendRedirect("cart.jsp");
-
-
 	}
 }
