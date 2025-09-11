@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -40,19 +39,21 @@ public class signup extends HttpServlet {
 	                pw.println("Data inserted successfully!");
 	            }
 	            
-	            ResultSet rs = ps.executeQuery("Select * from user;");
-	            while(rs.next()) {
-	            	String dbName = rs.getString("username");
-	            	String dbEmail = rs.getString("email");
-	            	String dbPass = rs.getString("pass");
-	            	
-	            	pw.println("<html><body>");
-	                pw.println("<h2>Form Submission Result</h2>");
-	                pw.println("<p>Name: " + dbName + "</p>");
-	                pw.println("<p>Email: " + dbEmail + "</p>");
-	                pw.println("<p>Password: " + dbPass + "</p>");
-	                pw.println("</body></html>");
-	            }
+	            res.sendRedirect("signin.jsp");
+	            
+//	            ResultSet rs = ps.executeQuery("Select * from user;");
+//	            while(rs.next()) {
+//	            	String dbName = rs.getString("username");
+//	            	String dbEmail = rs.getString("email");
+//	            	String dbPass = rs.getString("pass");
+//	            	
+//	            	pw.println("<html><body>");
+//	                pw.println("<h2>Form Submission Result</h2>");
+//	                pw.println("<p>Name: " + dbName + "</p>");
+//	                pw.println("<p>Email: " + dbEmail + "</p>");
+//	                pw.println("<p>Password: " + dbPass + "</p>");
+//	                pw.println("</body></html>");
+//	            }
 	            
 	            ps.close();
 	            conn.close();
