@@ -6,6 +6,10 @@ Users can **browse products**, **add products to a cart**, and view their shoppi
 
 ---
 
+![Project Screenshot](https://raw.githubusercontent.com/subratpandeyy/Ecommerce-JSP/refs/heads/main/src/main/webapp/CSS/Layout.png)
+
+---
+
 ## Features
 
 * User Registration and Login
