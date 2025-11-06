@@ -87,7 +87,7 @@
 			        <%
 			            } else {
 			        %>
-				            <a href="signin.jsp">Add to Cart</a>
+				            <a href="signin.jsp" class="cart-btn">Add to Cart</a>
 			        <%
 			            }
 			       	%>
